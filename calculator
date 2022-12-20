@@ -1,0 +1,137 @@
+import java.awt.*;
+import java.awt.event.*;
+import javax.swing.*;
+class myfrm extends JFrame implements ActionListener
+{
+	JTextField tl;
+	JButton b[];
+	Panel pl;
+	Font f;
+	int i;
+	double nol, no2, ans, flag=0;
+	myfrm()
+	{
+		super("calculator");
+		setSize(400,400);
+		setLocation (200, 100);
+		setLayout(null);
+		
+		t1=new JTextField();
+		pl=new Panel();
+		pl.setLayout(new GridLayout (4,3,5,5));
+		b=new JButton [18];
+		for (i=0;i<10;i++)
+			b[i]=new JButton(""+i);
+		b[10]=new JButton("+");
+		b[11]=new JButton("-");
+		b[12]=new JButton("*");
+		b[13]=new JButton("/");
+		b[14]=new JButton("=");
+		b[15]=new JButton(".");
+		b[16]=new JButton("clear");
+		b[17]=new JButton("exit");
+		
+		add (t1);
+		add (pl);
+		
+		for(i=1;i<10; i++)
+			p1.add(b[i]);
+		
+		pl.add(b[0]);
+		pl.add(b[14]);
+		pl.add(b[15]);
+		add(b[10]);
+		add(b[11]);
+		add(b[12]);
+		add(b[13]);
+		add(b[16]);
+		add(b[17]);
+		t1.setBounds(50,40,265,30);
+		pl.setBounds(50,80,200,200);
+		
+		b[10].setBounds(256,80,60,45);
+		b[11].setBounds(256,130,60,45);
+		b[12].setBounds(256,180,60,45);
+		b[13].setBounds(256,230, 60,50);
+		b[16].setBounds(50,285,136,45);
+		b[17].setBounds(185,285,130,45);
+		f=new Font("Arial", Font. BOLD, 20);
+		for (i=0;i<18;i++)
+			b[i].addActionListener(this);
+		b[i].setFont(f);
+	}
+	tl.setFont(f);
+	setDefaultCloseOperation (JFrame.EXIT_ON_CLOSE);
+	setVisible(true); 
+}
+public void actionPerformed (ActionEvent e)
+{
+	if (e.getSource() ==b[0]||e.getSource() ==b[1]||e.getSource() ==b[2]||e.getSource() = b[3]| e.getSource() ==b[4]||e.getSource() ==b[5]||e.getSource() ==b[6]||e.getSource()==b[7]|| e.getSource() ==b[8]||e.getSource() ==b[9])
+	{
+		if(t1.getText().length()==0)
+			tl.setText(e.getActionCommand());
+		else
+			tl.setText(t1.getText()+e.getActionCommand());
+		tl.setText(tl.getText()+e.getActionCommand());
+	}
+	if (e.getSource() ==b[10])
+	{
+		no1=Double.parseDouble(t1.getText());
+		flag=1;
+		tl.setText("");
+	}
+	if(e.getSource() ==b[11])
+	{
+		no1=Double.parseDouble(t1.getText());
+		flag=2;
+		tl.setText("");
+	}
+	if (e.getSource() ==b[12])
+	{
+		no1=Double.parseDouble(t1.getText());
+		flag=3;
+		tl.setText("");
+	}
+	if(e.getSource() ==b[13])
+	{
+		no1=Double.parseDouble(t1.getText());
+		tl.setText("");
+		flag=4;
+	}
+	if (e.getSource() ==b[14])
+	{
+		no2=Double.parseDouble(t1.getText());
+		if(flag==1)
+			ans=no1+no2;
+		if(flag==2)
+			ans=no1-no2;
+		if(flag==3)
+			ans=no1*no2;
+		if(flag==4)
+			ans=nol/no2;
+		tl.setText(""+ans);
+	}
+	if(e.getSource() ==b[15])
+	{
+		if(tl.getText().length()==0)
+			tl.setText("");
+		else
+			tl.setText(t1.getText()+".");
+	}
+	if (e.getSource() ==b[16])
+	{
+		tl.setText("");
+	}
+	if (e.getSource() ==b[17])
+	{
+		System.exit(0);
+	}
+}
+class Main
+{
+	public static void main(String args[])
+	{
+		new myfrm();
+	}
+}
+
